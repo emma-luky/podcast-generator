@@ -10,5 +10,8 @@ RUN pip3 install --break-system-packages PyYAML
 COPY feed.py /usr/bin/feed.py
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod 755 /entrypoint.sh
+
+RUN ls -l /
 
 ENTRYPOINT ["/entrypoint.sh"]
