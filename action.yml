@@ -1,18 +1,21 @@
-name: "Podcast Generator"
+name: "Podcast Generator - EHL"
 author: "Emma Luk"
 description: "Generates a feed for a podcast from a YAML file"
-runs:
-  using: "docker"
-  image: "Dockerfile"
-branding:
-  icon: "git-branch"
-  color: "red"
 inputs:
   email:
-    description: The commiter's email address
+    description: The committer's email address
     required: true
     default: ${{github.actor}}@localhost
   name:
-    description: the commiter's name
+    description: the committer's name
     required: true
     default: ${{github.actor}}
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.email }}
+    - ${{ inputs.name }}
+branding:
+  icon: "git-branch"
+  color: "red"
